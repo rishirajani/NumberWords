@@ -39,7 +39,6 @@ def grouping_func(num,formatting='universal'):
     Output : string
     
     """
-    num = num.replace(',','')
     name = ''
     if num == '0':
         name = 'zero'
@@ -54,7 +53,7 @@ def grouping_func(num,formatting='universal'):
             if int(num[-6:-3]) >0:
                 name += hundreds(int(num[-6:-3])) +' thousand, '
         name += hundreds(int(num[-3:]))
-        return name.capitalize()
+        return name.capitalize().strip().strip(',')
     elif formatting == 'indian':
         if 7 < len(num) <= 9:
             if int(num[:-7]) > 0:
@@ -66,4 +65,4 @@ def grouping_func(num,formatting='universal'):
             if int(num[-5:-3]) >0:
                 name += hundreds(int(num[-6:-3])) +' thousand, '
         name += hundreds(int(num[-3:]))
-        return name.capitalize()
+        return name.capitalize().strip().strip(',')
